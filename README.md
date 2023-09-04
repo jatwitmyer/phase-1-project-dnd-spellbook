@@ -1,1 +1,1 @@
-# phase-1-project-dnd-spellbook
+This program utilizes DND 5e API's (https://www.dnd5eapi.co) data to allow users to create a personal spellbook which they can reference during sessions.
