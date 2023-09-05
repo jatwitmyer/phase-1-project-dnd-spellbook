@@ -42,7 +42,7 @@ fetch(`${baseURL}/api/spells`)
 
 
 //We want range, damage, level, name, description
-//Task 1: renderSpellName function
+//Task 1: renderSpellName function 
 //task 2: click event for each spell name
 //Task 3: Render featured spell in center on click
 //task 4: Make a button which adds featured spell to spells library
@@ -58,5 +58,12 @@ function renderSpellName(spellObj) {
         spellLi.textContent = spell.name
         spellLi.className = 'spell-name'
         spellList.append(spellLi)
+        spellLi.addEventListener('click', (e) => {
+            // e.target.
+        })
     })
 }
+const form = document.querySelector('#search-spells')
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+})
