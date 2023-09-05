@@ -42,7 +42,7 @@ fetch(`${baseURL}/api/spells`)
 
 
 //We want range, damage, level, name, description
-//Task 1: renderSpellName function 
+//Task 1: renderSpellName function
 //task 2: click event for each spell name
 //Task 3: Render featured spell in center on click
 //task 4: Make a button which adds featured spell to spells library
@@ -59,11 +59,50 @@ function renderSpellName(spellObj) {
         spellLi.className = 'spell-name'
         spellList.append(spellLi)
         spellLi.addEventListener('click', (e) => {
-            // e.target.
+            fetch(`${baseURL}${spell.url}`)
+                .then(resp => resp.json())
+                .then(clickedSpell => renderFeaturedSpell(clickedSpell))
         })
     })
 }
-const form = document.querySelector('#search-spells')
+const form = document.querySelector('.search-spells')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 })
+
+fetch(`${baseURL}/api/spells/acid-splash`)
+    .then(resp => resp.json())
+    .then(spells => console.log(spells))
+
+function renderFeaturedSpell(spell) {
+    console.log(spell)
+    const title = document.querySelector("#spell-name")
+    title.textContent = spell.name
+
+    const level = document.querySelector("#level")
+    level.textContent = `Level ${spell.level}`
+
+    const ul = document.querySelector("#description")
+    ul.innerHTML = ""
+    spell.desc.forEach(item => {
+        const li = document.createElement("li")
+        li.textContent = item
+        ul.append(li)
+    })
+
+    const concentration = document.querySelector("#concentration")
+    if (spell.concentration) {
+        concentration.textContent = "This spell requires concentration."
+    } else {
+        concentration.textContent = "This spell does not require concentration."
+    }
+    
+    const spellClasses = document.querySelector("#spell-classes")
+    const arrayOfClasses = spell.classes
+    arrayOfClasses.forEach(classObj => {
+        const li = document.createElement("li")
+        li.textContent = classObj.name
+        spellClasses.append(li)
+    })
+
+} 
