@@ -7,6 +7,31 @@
     <script defer src="./index.js"></script>
 </head>
 <body>
-    
+   <div>
+    <form class="search-spells">
+        <h3>Search Spells!</h3>
+        <input
+          type="text"
+          name="name"
+          value=""
+          placeholder="Enter a spell's name..."
+          class="input-text"
+        />
+        <input type="submit" name="submitBtn" value="Search">
+    </form>
+    <ul id="spell-list">
+    </ul>
+   </div> 
+   <div id="feature-spell-container">
+    <h1 id="spell-name"></h1>
+    <h3 id="level"></h3>
+    <ul id="description"></ul>
+    <p id="concentration"></p>
+    <h3 id="classes-header">Classes:</h3>
+    <ul id="spell-classes">
+    </ul>
+   </div>
 </body>
 </html>
+
+
