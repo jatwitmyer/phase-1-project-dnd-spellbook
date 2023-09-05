@@ -42,10 +42,10 @@ fetch(`${baseURL}/api/spells`)
 
 
 //We want range, damage, level, name, description
-//Task 1: renderSpellName function
-//task 2: click event for each spell name
-//Task 3: Render featured spell in center on click
-//task 4: Make a button which adds featured spell to spells library
+//Task 1: renderSpellName function [DONE]
+//task 2: click event for each spell name [DONE]
+//Task 3: Render featured spell in center on click [DONE]
+//task 4: Make a button which adds featured spell to spells library [DONE]
 //task 5: Add text submit form for list of spells
 //task 6: Add styling
 
@@ -70,12 +70,9 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
 })
 
-fetch(`${baseURL}/api/spells/acid-splash`)
-    .then(resp => resp.json())
-    .then(spells => console.log(spells))
-
 function renderFeaturedSpell(spell) {
-    console.log(spell)
+    
+    //console.log(spell)
     const title = document.querySelector("#spell-name")
     title.textContent = spell.name
 
@@ -98,6 +95,7 @@ function renderFeaturedSpell(spell) {
     }
     
     const spellClasses = document.querySelector("#spell-classes")
+    spellClasses.innerHTML = ""
     const arrayOfClasses = spell.classes
     arrayOfClasses.forEach(classObj => {
         const li = document.createElement("li")
@@ -105,4 +103,33 @@ function renderFeaturedSpell(spell) {
         spellClasses.append(li)
     })
 
+    const buttonContainer = document.querySelector("#button-container")
+    buttonContainer.innerHTML = ""
+    const faveButton = document.createElement("button")
+    faveButton.id = "fave-button"
+    faveButton.textContent = "Add to faves"
+    buttonContainer.append(faveButton)
+    
+    renderSpellLibrary(spell)
 } 
+
+const div = document.querySelector("#feature-spell-container")
+
+// Create an ul and li's to house our spell library
+// Create button element
+// Create event listener on click for rendering selected spell to spell library
+
+function renderSpellLibrary(newSpellObj) {
+    //console.log(newSpellObj)
+    const button = document.querySelector("#fave-button")
+    //console.log(button)
+    button.addEventListener("click", (e) => {
+        //console.log("I was clicked")
+        const favesUl = document.querySelector("#my-faves")
+        const li = document.createElement("li")
+        const title = document.querySelector("#spell-name")
+        li.textContent = title.textContent
+        favesUl.appendChild(li)
+        //console.log(newSpellObj)
+    })
+}
