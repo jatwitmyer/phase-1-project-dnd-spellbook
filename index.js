@@ -1,8 +1,8 @@
 const baseURL = "https://www.dnd5eapi.co"
 
-fetch("https://www.dnd5eapi.co/api")
-    .then(resp => resp.json())
-    .then(endpoints => console.log(endpoints))
+// fetch("https://www.dnd5eapi.co/api")
+//     .then(resp => resp.json())
+//     .then(endpoints => console.log(endpoints))
 
 /* returns:
 {
@@ -35,15 +35,28 @@ fetch("https://www.dnd5eapi.co/api")
 
 fetch(`${baseURL}/api/spells`)
     .then(resp => resp.json())
-    .then(spells => console.log(spells))
+    .then(spells => renderSpellName(spells))
 
 //returns an object where the key "results" contains an array of 319 spell objects
 //each spell object has keys "index", "name", and "url" (which has a location to fetch from for spell details)
 
-fetch(`${baseURL}/api/monsters`)
-    .then(resp => resp.json())
-    .then(monsters => console.log(monsters))
 
-//returns an object where the key "results" contains an array of 334 monster objects
-//each monster object has keys "index", "name", and "url" (which has a location to fetch from for spell details)
+//We want range, damage, level, name, description
+//Task 1: renderSpellName function
+//task 2: click event for each spell name
+//Task 3: Render featured spell in center on click
+//task 4: Make a button which adds featured spell to spells library
+//task 5: Add text submit form for list of spells
+//task 6: Add styling
 
+function renderSpellName(spellObj) {
+    const spellList = document.querySelector('#spell-list')
+    const spellArray = spellObj.results
+    // console.log(spellArray)
+    spellArray.forEach((spell) => {
+        const spellLi = document.createElement('li')
+        spellLi.textContent = spell.name
+        spellLi.className = 'spell-name'
+        spellList.append(spellLi)
+    })
+}
