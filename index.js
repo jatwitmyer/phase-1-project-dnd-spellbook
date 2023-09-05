@@ -35,7 +35,10 @@ const baseURL = "https://www.dnd5eapi.co"
 
 fetch(`${baseURL}/api/spells`)
     .then(resp => resp.json())
-    .then(spells => renderSpellName(spells))
+    .then(spells => {
+        renderSpellName(spells);
+        searchSpells(spells);
+    })
 
 //returns an object where the key "results" contains an array of 319 spell objects
 //each spell object has keys "index", "name", and "url" (which has a location to fetch from for spell details)
@@ -46,7 +49,7 @@ fetch(`${baseURL}/api/spells`)
 //task 2: click event for each spell name [DONE]
 //Task 3: Render featured spell in center on click [DONE]
 //task 4: Make a button which adds featured spell to spells library [DONE]
-//task 5: Add text submit form for list of spells
+//task 5: Add text submit form for list of spells[]
 //task 6: Add styling
 
 function renderSpellName(spellObj) {
@@ -65,10 +68,34 @@ function renderSpellName(spellObj) {
         })
     })
 }
-const form = document.querySelector('.search-spells')
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-})
+
+function searchSpells(spells){
+   // console.log(spells.results)
+
+    const form = document.querySelector('.search-spells')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const userInput = e.target.spell.value
+        //console.log(userInput)
+        let spellResult = {}
+        spells.results.forEach(spell=>{
+            // console.log(spell)
+            if (spell.name === userInput){
+                spellResult = spell
+            } else {
+                console.log('dum dum did not find spell')
+            }
+            //console.log(spell.name)
+        })
+        // console.log(spellResult)
+       fetch(`${baseURL}${spellResult.url}`)
+        .then(resp => resp.json())
+        .then(data => renderFeaturedSpell(data))
+
+        
+})}
+
 
 function renderFeaturedSpell(spell) {
     
