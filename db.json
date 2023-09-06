@@ -1,0 +1,57 @@
+{
+  "my-faves": [
+    {
+      "name": "Acid Splash",
+      "level": 0,
+      "desc": [
+        "You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a dexterity saving throw or take 1d6 acid damage.",
+        "This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+      ],
+      "concentration": false,
+      "classes": [
+        {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/classes/sorcerer"
+        },
+        {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/classes/wizard"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Animal Friendship",
+      "level": 1,
+      "desc": [
+        "This spell lets you convince a beast that you mean it no harm. Choose a beast that you can see within range. It must see and hear you. If the beast's Intelligence is 4 or higher, the spell fails. Otherwise, the beast must succeed on a wisdom saving throw or be charmed by you for the spell's duration. If you or one of your companions harms the target, the spells ends."
+      ],
+      "concentration": false,
+      "classes": [
+        {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/classes/bard"
+        },
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/classes/cleric"
+        },
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/classes/druid"
+        },
+        {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/classes/ranger"
+        }
+      ],
+      "id": 2
+    }
+  ]
+}

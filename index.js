@@ -141,9 +141,40 @@ function renderFeaturedSpell(spell) {
     const faveButton = document.createElement("button")
     faveButton.id = "fave-button"
     faveButton.textContent = "Add to faves"
+    faveButton.addEventListener("click", (e) => {
+        const faveObj = {
+            'name' : spell.name,
+            'level' : spell.level,
+            'desc' : spell.desc,
+            'concentration' : spell.concentration,
+            'classes' : spell.classes
+        }
+        // console.log(faveObj)
+        fetch('http://localhost:3000/my-faves', {method: 'POST', headers: {
+            'Content-Type': 'application/json' // Set the content type
+          },
+          body: JSON.stringify(faveObj) // Attach the JSON payload to the body of the request
+          
+        })
+            .then(resp => resp.json())
+            .then(featuredObj => { 
+                // console.log(featuredObj)
+                const favesUl = document.querySelector("#my-faves")
+                const li = document.createElement("li")
+                const title = document.querySelector("#spell-name")
+                li.textContent = featuredObj.name
+                li.addEventListener('click', (e) => {
+                    renderFeaturedSpell(featuredObj)
+                })
+                favesUl.appendChild(li)
+            })
+        //console.log("I was clicked")
+        
+    //     //console.log(newSpellObj)
+    })
     buttonContainer.append(faveButton)
     
-    renderSpellLibrary(spell)
+    // renderSpellLibrary(spell)
 } 
 
 const div = document.querySelector("#feature-spell-container")
@@ -152,20 +183,20 @@ const div = document.querySelector("#feature-spell-container")
 // Create button element
 // Create event listener on click for rendering selected spell to spell library
 
-function renderSpellLibrary(newSpellObj) {
-    //console.log(newSpellObj)
-    const button = document.querySelector("#fave-button")
-    //console.log(button)
-    button.addEventListener("click", (e) => {
-        //console.log("I was clicked")
-        const favesUl = document.querySelector("#my-faves")
-        const li = document.createElement("li")
-        const title = document.querySelector("#spell-name")
-        li.textContent = title.textContent
-        favesUl.appendChild(li)
-        //console.log(newSpellObj)
-    })
-}
+// function renderSpellLibrary(newSpellObj) {
+//     //console.log(newSpellObj)
+//     const button = document.querySelector("#fave-button")
+//     //console.log(button)
+//     button.addEventListener("click", (e) => {
+//         //console.log("I was clicked")
+//         const favesUl = document.querySelector("#my-faves")
+//         const li = document.createElement("li")
+//         const title = document.querySelector("#spell-name")
+//         li.textContent = title.textContent
+//         favesUl.appendChild(li)
+//         //console.log(newSpellObj)
+//     })
+// }
 const spellList = document.querySelector('#spell-list')
 document.addEventListener('keydown', (e) => {
     if(e.key === '1') {
