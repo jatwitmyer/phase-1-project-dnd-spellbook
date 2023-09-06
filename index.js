@@ -120,6 +120,11 @@ function renderFeaturedSpell(spell) {
     } else {
         concentration.textContent = "This spell does not require concentration."
     }
+    const featuredContainer = document.querySelector('#classes-container')
+    const classesH3 = document.createElement('h3')
+    classesH3.textContent = 'Classes:'
+    classesH3.id = 'classes-header'
+    featuredContainer.append(classesH3)
     
     const spellClasses = document.querySelector("#spell-classes")
     spellClasses.innerHTML = ""
@@ -160,3 +165,29 @@ function renderSpellLibrary(newSpellObj) {
         //console.log(newSpellObj)
     })
 }
+const spellList = document.querySelector('#spell-list')
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'a') {
+        if(spellList.style.display === 'none') {
+            spellList.style.display = 'block';
+        }
+        else {
+            spellList.style.display = 'none';
+        }
+    }
+})
+// // Select the HTML element you want to toggle. For example, an element with the ID "myElement"
+// const myElement = document.getElementById("myElement");
+
+// // Add the keydown event listener to the document
+// document.addEventListener("keydown", function(event) {
+//     // Check if the pressed key is "t" (for toggle)
+//     if (event.key === "t") {
+//         // Toggle the element's visibility
+//         if (myElement.style.display === "none") {
+//             myElement.style.display = "block";
+//         } else {
+//             myElement.style.display = "none";
+//         }
+//     }
+// });
