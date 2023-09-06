@@ -121,6 +121,7 @@ function renderFeaturedSpell(spell) {
         concentration.textContent = "This spell does not require concentration."
     }
     const featuredContainer = document.querySelector('#classes-container')
+    featuredContainer.innerHTML = ''
     const classesH3 = document.createElement('h3')
     classesH3.textContent = 'Classes:'
     classesH3.id = 'classes-header'
@@ -167,7 +168,7 @@ function renderSpellLibrary(newSpellObj) {
 }
 const spellList = document.querySelector('#spell-list')
 document.addEventListener('keydown', (e) => {
-    if(e.key === 'a') {
+    if(e.key === '1') {
         if(spellList.style.display === 'none') {
             spellList.style.display = 'block';
         }

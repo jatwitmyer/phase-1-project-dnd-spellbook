@@ -1,0 +1,107 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #3e2723;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-image: url('wood-texture.jpg'); /* You'd need to add a wood texture image */
+    background-size: cover;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#feature-spell-container,
+#spell-library,
+div:first-child {
+    background: rgba(255, 245, 225, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+div:first-child,
+#feature-spell-container {
+    width: 40%;
+}
+
+#spell-library {
+    width: 15%;
+}
+
+#feature-spell-container {
+    flex-grow: 1;
+}
+
+h1, h3 {
+    text-shadow: 1px 1px 1px #000;
+    margin: 10px 0;
+}
+
+form.search-spells {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#spell-list li,
+#my-faves li,
+#spell-classes li,
+#description li {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#spell-list li:hover,
+#my-faves li:hover,
+#spell-classes li:hover,
+#description li:hover {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Layout */
+body {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+#spell-list-form-container {
+    order: 1;
+}
+
+#feature-spell-container {
+    order: 2;
+}
+
+#spell-library {
+    order: 3;
+}
