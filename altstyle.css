@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://wallpaper.dog/large/20542129.jpg");
+}
+
+#spell-list-form-container {
+    background: #fff;
+    width: 20%;
+    padding: 15px
+}
+
+#feature-spell-container {
+    background: #fff;
+    /* width: 50%; */
+    flex-grow: 1;
+    padding: 15px
+}
+
+#spell-library {
+    background: #fff;
+    width: 20%;
+    padding: 15px
+}
+
