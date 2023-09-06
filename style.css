@@ -1,0 +1,115 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #3e2723;
+    color: #EEE8D5;
+    margin: 0;
+    padding: 0;
+    background-image: url('Bookshelf.jpeg'); /* Replace with your dark wood texture image */
+    background-size: cover;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#spell-list-form-container,
+#feature-spell-container,
+#spell-library {
+    background: rgba(50, 50, 50, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+#spell-list-form-container {
+    width: 30%;
+}
+
+#feature-spell-container {
+    flex-grow: 1;
+    width: 45%;
+}
+
+#spell-library {
+    width: 20%;
+}
+
+h1, h3 {
+    text-shadow: 1px 1px 1px #000;
+    margin: 10px 0;
+}
+
+.search-spells {
+    margin-bottom: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #388918;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4CAF50;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#spell-list,
+#my-faves {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#spell-list li,
+#my-faves li,
+#spell-classes li,
+#description li {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#spell-list li:hover,
+#my-faves li:hover,
+#spell-classes li:hover,
+#description li:hover {
+    background-color: #388918;
+    color: #FFF;
+}
+
+/* Layout */
+body {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+#spell-list-form-container {
+    order: 1;
+}
+
+#feature-spell-container {
+    order: 2;
+}
+
+#spell-library {
+    order: 3;
+}
