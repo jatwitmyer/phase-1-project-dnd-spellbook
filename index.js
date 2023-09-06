@@ -40,6 +40,25 @@ fetch(`${baseURL}/api/spells`)
         searchSpells(spells);
     })
 
+fetch("http://localhost:3000/my-faves")
+    .then(resp => resp.json())
+    .then(myFaves => {
+        renderMyFaves(myFaves)
+    })
+
+function renderMyFaves(arrayOfSpells) {
+    arrayOfSpells.forEach(obj => {
+        const favesUl = document.querySelector("#my-faves")
+                const li = document.createElement("li")
+                const title = document.querySelector("#spell-name")
+                li.textContent = obj.name
+                li.addEventListener('click', (e) => {
+                    renderFeaturedSpell(obj)
+                })
+                favesUl.appendChild(li)
+    })
+}
+
 //returns an object where the key "results" contains an array of 319 spell objects
 //each spell object has keys "index", "name", and "url" (which has a location to fetch from for spell details)
 
@@ -173,9 +192,65 @@ function renderFeaturedSpell(spell) {
     //     //console.log(newSpellObj)
     })
     buttonContainer.append(faveButton)
+
+    const deleteButton = document.createElement("button")
+    deleteButton.textContent = "Delete from my faves"
+    const deleteButtonDiv = document.querySelector("#delete-button-container")
+    deleteButtonDiv.innerHTML=""
+    deleteButtonDiv.append(deleteButton)
+    deleteButton.addEventListener("click", e => {
+        // console.log(e.target)
+        //target the featured spell in the database
+        // console.log(spell.name)
+        fetch("http://localhost:3000/my-faves")
+            .then(resp => resp.json())
+            .then(allMyFaves => {
+                //get the ids for all faves that match the spell.name
+                console.log(allMyFaves)
+                allMyFaves.forEach(fave => {
+                    if (fave.name === spell.name) {
+                        const index = fave.id
+                        fetch(`http://localhost:3000/my-faves/${index}`, {method: 'DELETE'})
+                            .then(resp => resp.json())
+                            .then(deleteObj => {
+                                spell.name
+                                const libraryDiv = document.querySelector("#spell-library")
+                                const myFavesList = libraryDiv.querySelectorAll("ul li")
+                                myFavesList.forEach(node => {
+                                    if (node.innerText === spell.name) {
+                                        node.remove()
+                                    }
+                                })
+                            })
+                    }
+                
+                })
+            })
+        // const index = s
+        // fetch(`http://localhost:3000/my-faves/${index}`, {method: 'DELETE'})
+        //     .then(resp => resp.json())
+        //     .then(featuredObj => { 
+        //         console.log(featuredObj)
+                // const favesUl = document.querySelector("#my-faves")
+                // const li = document.createElement("li")
+                // const title = document.querySelector("#spell-name")
+                // li.textContent = featuredObj.name
+                // li.addEventListener('click', (e) => {
+                //     renderFeaturedSpell(featuredObj)
+                // })
+                // favesUl.appendChild(li)
+            // })
+    })
+
+    // myFavesList.
+   
+
     
     // renderSpellLibrary(spell)
 } 
+
+
+
 
 const div = document.querySelector("#feature-spell-container")
 
