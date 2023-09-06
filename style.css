@@ -1,10 +1,10 @@
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: #3e2723;
-    color: #333;
+    color: #EEE8D5;
     margin: 0;
     padding: 0;
-    background-image: url('wood-texture.jpg'); /* You'd need to add a wood texture image */
+    background-image: url('Bookshelf.jpeg'); /* Replace with your dark wood texture image */
     background-size: cover;
 }
 
@@ -12,27 +12,27 @@ div {
     box-sizing: border-box;
 }
 
+#spell-list-form-container,
 #feature-spell-container,
-#spell-library,
-div:first-child {
-    background: rgba(255, 245, 225, 0.8);
+#spell-library {
+    background: rgba(50, 50, 50, 0.7);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 20px;
 }
 
-div:first-child,
-#feature-spell-container {
-    width: 40%;
-}
-
-#spell-library {
-    width: 15%;
+#spell-list-form-container {
+    width: 30%;
 }
 
 #feature-spell-container {
     flex-grow: 1;
+    width: 45%;
+}
+
+#spell-library {
+    width: 20%;
 }
 
 h1, h3 {
@@ -40,8 +40,10 @@ h1, h3 {
     margin: 10px 0;
 }
 
-form.search-spells {
+.search-spells {
     margin-bottom: 20px;
+    width: 80%;
+    margin: auto;
 }
 
 input[type="text"] {
@@ -52,7 +54,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #388918;
     color: white;
     border: none;
     border-radius: 5px;
@@ -61,12 +63,18 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #4CAF50;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+#spell-list,
+#my-faves {
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 #spell-list li,
@@ -83,8 +91,8 @@ ul {
 #my-faves li:hover,
 #spell-classes li:hover,
 #description li:hover {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #388918;
+    color: #FFF;
 }
 
 /* Layout */
