@@ -100,10 +100,10 @@ function searchSpells(spells){
         let spellResult = {}
         spells.results.forEach(spell=>{
             // console.log(spell)
-            if (spell.name === userInput){
+            if (spell.name.toLowerCase() === userInput.toLowerCase()){
                 spellResult = spell
             } else {
-                console.log('dum dum did not find spell')
+                console.log('did not find spell =(')
             }
             //console.log(spell.name)
         })
